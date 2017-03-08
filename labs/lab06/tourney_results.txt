@@ -1,0 +1,45 @@
+
+============= Starting tier 1 =============
+-------------------- Winners Bracket ----------------------
+Playing rock against scissors ...
+  rock score is 50, scissors score is 0 ...rock Won!!!!
+Playing random against dhintz1 ...
+  random score is 20, dhintz1 score is 34 ...dhintz1 Won!!!
+  Player paper got a bye into the next tier
+============= Finished tier 1 =============
+
+============= Starting tier 2 =============
+-------------------- Winners Bracket ----------------------
+Playing dhintz1 against paper ...
+  dhintz1 score is 48, paper score is 2 ...dhintz1 Won!!!!
+  Player rock got a bye into the next tier
+--------------------- Losers Bracket ------------------------------
+Playing random against scissors ...
+  random score is 86, scissors score is 36 ...random Won!!!!
+Eliminating scissors after two losses
+============= Finished tier 2 =============
+
+============= Starting tier 3 =============
+-------------------- Winners Bracket ----------------------
+Playing dhintz1 against rock ...
+  dhintz1 score is 44, rock score is 6 ...dhintz1 Won!!!!
+--------------------- Losers Bracket ------------------------------
+Playing random against paper ...
+  random score is 57, paper score is 20 ...random Won!!!!
+Eliminating paper after two losses
+============= Finished tier 3 =============
+
+============= Starting tier 4 =============
+-------------------- Winners Bracket ----------------------
+  Player dhintz1 got a bye into the next tier
+--------------------- Losers Bracket ------------------------------
+Playing random against rock ...
+  random score is 32, rock score is 33 ...rock Won!!!
+Eliminating random after two losses
+============= Finished tier 4 =============
+
+========== Championship Match! ==============
+Playing dhintz1 against rock ...
+  dhintz1 score is 46, rock score is 4 ...dhintz1 Won!!!!
+
+Winner and unbeaten champion: dhintz1!!!
