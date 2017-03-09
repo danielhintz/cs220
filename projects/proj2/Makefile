@@ -4,6 +4,9 @@ ITEM = proj2
 test: floatx
 	./floatx 32 8 <test1.txt
 
+test2: floatx
+	./floatx 32 8 <test2.txt
+
 floatx:  	main.c floatx.c floatx.h
 		gcc  -g -Wall -std=c99 -lm  -o floatx main.c floatx.c 
 

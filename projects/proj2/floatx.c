@@ -5,7 +5,9 @@
 
 //#define DEBUG
 
-unsigned long getBits(unsigned long num, unsigned long start, unsigned long end);
+typedef char bool;
+
+floatx getBits(floatx num, floatx start, floatx end);
 char getBit(floatx ip, int index);
 void setBit(floatx *ip, int index, char b);
 void print_bits(floatx ip);
@@ -17,17 +19,25 @@ void print_bits_int(unsigned int num);
 -------------------------------------------------------------------------------- */
 floatx doubleToFloatx(const floatxDef *def, double value)
 {
-  unsigned long dBits = *((unsigned long*) &value);
+  floatx dBits = *((floatx*) &value);
   int fBits = def->totBits-def->expBits-1;
   floatx result = 0;
-  
+
+  // bool denormal;
+
   if(value<0)result = (floatx)1 << (def->totBits-1);
   
-  unsigned long exponent = getBits(dBits, 62, 52);
-  unsigned long frac = getBits(dBits, 51, 0) >> (51-fBits);
-  unsigned char carry = frac & 1;
+  floatx exponent = getBits(dBits, 62, 52);
+  floatx frac = getBits(dBits, 51, 0) >> (51-fBits);
+  bool carry = frac & 1;
   frac >>= 1;
+
   if(exponent == 0 && frac == 0) return 0;
+  if(exponent == 0)
+    {
+      //Denormalized number
+      //This isn't run for 1.27563e+45
+    }
   
   exponent -= 1023;
   exponent += (int)pow(2, def->expBits-1)-1;
@@ -36,8 +46,6 @@ floatx doubleToFloatx(const floatxDef *def, double value)
 
   if(carry)frac++;
   result |= (exponent) | (frac);
-
-  print_bits(0x005605fc);
 
 #ifdef DEBUG
   print_bits(dBits);
@@ -50,15 +58,14 @@ floatx doubleToFloatx(const floatxDef *def, double value)
 
   printf("%lx  %lx  %lx\n", dBits, exponent, frac);
 #endif
-
   return result;
 }
 
-unsigned long getBits(unsigned long num, unsigned long start, unsigned long end)
+floatx getBits(floatx num, floatx start, floatx end)
 {
-  unsigned long res = 0;
+  floatx res = 0;
   
-  unsigned long i;
+  floatx i;
   for(i=start;i>end;i--)
     {
       res |= (num & ((floatx)1<<i));
@@ -66,22 +73,6 @@ unsigned long getBits(unsigned long num, unsigned long start, unsigned long end)
   res |= (num & ((floatx)1<<end));
 
   return res >> (end);
-}
-
-void print_bits_int(unsigned int ip)
-{
-  char *bytes = malloc(4*sizeof(unsigned int)+1);
-
-  unsigned int i;
-
-  for(i=(unsigned int)1<<(4*sizeof(unsigned int)-1);i>0;i>>=1)
-    {
-      (*bytes) = ((ip&i) == i) ? '1' : '0';
-      bytes++;
-    }
-  *bytes=0;
-  printf("%s\n", (bytes-4*sizeof(unsigned int)));
-
 }
 
 void print_bits(floatx ip)
@@ -97,22 +88,6 @@ void print_bits(floatx ip)
     }
   *bytes=0;
   printf("%s\n", (bytes-8*sizeof(floatx)));
-}
-
-void setBit(floatx *ip, int index, char b)
-{
-  if(b)
-    {
-      *ip |= 1 << index;
-    } else
-    {
-      *ip &= ~(1<<index);
-    }
-}
-
-char getBit(floatx ip, int index)
-{
-  return ip >> index;
 }
 
 /** Return C double with value which best approximates that of floatx fx
