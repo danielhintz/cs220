@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//#define DEBUG
+
 unsigned long getBits(unsigned long num, unsigned long start, unsigned long end);
 char getBit(floatx ip, int index);
 void setBit(floatx *ip, int index, char b);
@@ -22,30 +24,33 @@ floatx doubleToFloatx(const floatxDef *def, double value)
   if(value<0)result = (floatx)1 << (def->totBits-1);
   
   unsigned long exponent = getBits(dBits, 62, 52);
-  unsigned long frac = getBits(dBits, 51, 0) >> (51-fBits+1);
+  unsigned long frac = getBits(dBits, 51, 0) >> (51-fBits);
+  unsigned char carry = frac & 1;
+  frac >>= 1;
   if(exponent == 0 && frac == 0) return 0;
   
   exponent -= 1023;
   exponent += (int)pow(2, def->expBits-1)-1;
   
-
-  //printf("Original bits: ");
-  print_bits(dBits);
   exponent <<= (fBits);
-  exponent |= result;
-  //printf("Exponent bits: ");
-  print_bits(exponent);
 
-  //printf("Fraction bits: ");
-  print_bits(frac);
-
-
-  printf("%lx  %lx  %lx\n", dBits, exponent, frac);
-
+  if(carry)frac++;
   result |= (exponent) | (frac);
 
-  print_bits_int(result>>31);
+  print_bits(0x005605fc);
+
+#ifdef DEBUG
+  print_bits(dBits);
   
+  print_bits(exponent);
+  
+  print_bits(frac);
+  
+  print_bits(result);
+
+  printf("%lx  %lx  %lx\n", dBits, exponent, frac);
+#endif
+
   return result;
 }
 
