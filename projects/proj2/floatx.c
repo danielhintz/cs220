@@ -12,11 +12,6 @@ char indexOfFirstOne(floatx num);
 floatx getBits(floatx num, floatx start, floatx end);
 void print_bits(floatx ip);
 
-
-/*--------------------------------------------------------------------------------
-	Return floatx representation (as defined by *def) which
-	best approximates value
--------------------------------------------------------------------------------- */
 floatx doubleToFloatx(const floatxDef *def, double value)
 {
   floatx dBits = *((floatx*) &value);
@@ -43,11 +38,11 @@ floatx doubleToFloatx(const floatxDef *def, double value)
 
   exponent -= 1023;
   exponent += (int)pow(2, def->expBits-1)-1;
-
+  
   if((signed long)exponent <=0)
     {
       shift = -(signed long) exponent;
-      denormal=1;
+      denormal=true;
     }
   if(!denormal && exponent > (int)pow(2, def->expBits)-1)
     {
@@ -57,7 +52,7 @@ floatx doubleToFloatx(const floatxDef *def, double value)
     }
   if(exponent == 0 || denormal)
     {
-      denormal = 1;
+      denormal = true;
       exponent = 0;
       frac = getBits(dBits, 51, 0) >> (51-fBits+shift+2);
       frac |= ((floatx)1<<(fBits-(1+shift)));
@@ -68,11 +63,11 @@ floatx doubleToFloatx(const floatxDef *def, double value)
   exponent <<= (fBits);
 
   if(carry)frac++;
-  result |= (exponent) | (frac);
+  result |= (exponent | frac);
 #ifdef DEBUG
   print_bits(dBits);
   
-  print_bits(exponent>>fBits);
+  print_bits(exponent);
   
   print_bits(frac);
   
@@ -89,14 +84,8 @@ floatx doubleToFloatx(const floatxDef *def, double value)
 floatx getBits(floatx num, floatx start, floatx end)
 {
   floatx res = 0;
-  
   floatx i;
-  for(i=start;i>end;i--)
-    {
-      res |= (num & ((floatx)1<<i));
-    }
-  res |= (num & ((floatx)1<<end));
-
+  for(i=end;i<=start;i++) res |= (num & ((floatx)1<<i));
   return res >> (end);
 }
 
@@ -115,9 +104,6 @@ void print_bits(floatx ip)
   printf("%s\n", (bytes-8*sizeof(floatx)));
 }
 
-/** Return C double with value which best approximates that of floatx fx
- *  (as defined by *def).
- */
 double floatxToDouble(const floatxDef *def, floatx fx)
 {
   floatx dBits = *((floatx*) &fx);
