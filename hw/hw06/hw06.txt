@@ -1,0 +1,67 @@
+CS220 Homework 6 Due Mar. 26, 2017
+
+Please download this file, edit it to add your answers, and submit the result in myCourses CS-220
+under Content/Homework Submissions/Homework 06 Submission
+
+1. Given the following code, and assuming short ints are 16 bits wide, and ints are 32 bits wide:
+ 
+ 	short int x=-5;
+ 	int y;
+ 	y=x;
+ 	
+    a. What is the value of y in decimal? -5
+    b. What are the values of y and y in hexadecimal? -5, 0xfffffffb
+    c. Does padding on the left with the sign bit to increase precision change the value of a negative number? no
+   	
+    	
+2. Given the following code, and assuming ints are 32 bits wide:
+	int x=0x00000011;
+	int y=0xFFFFFFFC;
+	
+	a. What is the hexadecimal value of x+y? 0xd
+	b. What is the decimal value of x, and y? 17, -4
+	c. What is the decimal value of (x+y)? 13
+	d. Do you get the same answer for (x+y) using either hexadecimal arithmetic, or decimal? yes
+    	
+    	
+  3. Given the following code:
+  	
+  	int x=atoi(argv[1]);
+  	int y=atoi(argv[2]);
+  	unsigned int v=x;
+  	unsigned int w=y;
+  	int s_sum=x+y;
+  	usinged int u_sum=v+w;
+  	if (s_sum==u_sum) printf("Unsigned and signed are the same\n");
+  	else printf("Unsigned and signed are different\n");
+  	
+     a. What do you expect to see printed for most values of argv[1] and argv[2]? Unsigned and signed are the same
+     
+     b. Are there any values of argv[1] and argv[2] which will result in "Unsigned and signed are different"? Big numbers, negative numbers
+     
+     c. If you changed the addition to multiplication: "s_sum=x*y;" and "u_sum=v*w;" will you get the same results? Yes
+     
+4. Given the following C code:
+
+	int x=atoi(argv[1]);
+	int y=(x | (-1-x));
+	if (y==-1) printf("How did you know that?\n");
+	else printf("Special value of x!\n");
+	
+   Is there any value of x for which will print "Special value of x!"?
+   If so, what is the value of x? no
+      
+5. Given the following code:
+
+	constant float big=1e20;
+	constant float little=-1e20;
+	constant float pi=3.14;
+	float y = (big + little)+pi;
+	float z = big + (little + pi);
+	if (y==z) printf("This is an example of the associative property.\n");
+	else printf("This is a counter-example.. the associative property does not hold!\n");
+	
+   Which message will get printed?  Counter-example
+   Why?  Floating point arithmetic is stupid and makes my head hurt
+     
+     
