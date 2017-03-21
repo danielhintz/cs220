@@ -1,0 +1,414 @@
+
+x86Math:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+00000000004003e0 <_init>:
+_init():
+  4003e0:	48 83 ec 08          	sub    $0x8,%rsp
+  4003e4:	48 8b 05 5d 07 20 00 	mov    0x20075d(%rip),%rax        # 600b48 <_DYNAMIC+0x1d0>
+  4003eb:	48 85 c0             	test   %rax,%rax
+  4003ee:	74 05                	je     4003f5 <_init+0x15>
+  4003f0:	e8 3b 00 00 00       	callq  400430 <__gmon_start__@plt>
+  4003f5:	48 83 c4 08          	add    $0x8,%rsp
+  4003f9:	c3                   	retq   
+
+Disassembly of section .plt:
+
+0000000000400400 <printf@plt-0x10>:
+  400400:	ff 35 52 07 20 00    	pushq  0x200752(%rip)        # 600b58 <_GLOBAL_OFFSET_TABLE_+0x8>
+  400406:	ff 25 54 07 20 00    	jmpq   *0x200754(%rip)        # 600b60 <_GLOBAL_OFFSET_TABLE_+0x10>
+  40040c:	0f 1f 40 00          	nopl   0x0(%rax)
+
+0000000000400410 <printf@plt>:
+  400410:	ff 25 52 07 20 00    	jmpq   *0x200752(%rip)        # 600b68 <_GLOBAL_OFFSET_TABLE_+0x18>
+  400416:	68 00 00 00 00       	pushq  $0x0
+  40041b:	e9 e0 ff ff ff       	jmpq   400400 <_init+0x20>
+
+0000000000400420 <__libc_start_main@plt>:
+  400420:	ff 25 4a 07 20 00    	jmpq   *0x20074a(%rip)        # 600b70 <_GLOBAL_OFFSET_TABLE_+0x20>
+  400426:	68 01 00 00 00       	pushq  $0x1
+  40042b:	e9 d0 ff ff ff       	jmpq   400400 <_init+0x20>
+
+0000000000400430 <__gmon_start__@plt>:
+  400430:	ff 25 42 07 20 00    	jmpq   *0x200742(%rip)        # 600b78 <_GLOBAL_OFFSET_TABLE_+0x28>
+  400436:	68 02 00 00 00       	pushq  $0x2
+  40043b:	e9 c0 ff ff ff       	jmpq   400400 <_init+0x20>
+
+0000000000400440 <atoi@plt>:
+  400440:	ff 25 3a 07 20 00    	jmpq   *0x20073a(%rip)        # 600b80 <_GLOBAL_OFFSET_TABLE_+0x30>
+  400446:	68 03 00 00 00       	pushq  $0x3
+  40044b:	e9 b0 ff ff ff       	jmpq   400400 <_init+0x20>
+
+Disassembly of section .text:
+
+0000000000400450 <_start>:
+_start():
+  400450:	31 ed                	xor    %ebp,%ebp
+  400452:	49 89 d1             	mov    %rdx,%r9
+  400455:	5e                   	pop    %rsi
+  400456:	48 89 e2             	mov    %rsp,%rdx
+  400459:	48 83 e4 f0          	and    $0xfffffffffffffff0,%rsp
+  40045d:	50                   	push   %rax
+  40045e:	54                   	push   %rsp
+  40045f:	49 c7 c0 30 07 40 00 	mov    $0x400730,%r8
+  400466:	48 c7 c1 c0 06 40 00 	mov    $0x4006c0,%rcx
+  40046d:	48 c7 c7 46 05 40 00 	mov    $0x400546,%rdi
+  400474:	e8 a7 ff ff ff       	callq  400420 <__libc_start_main@plt>
+  400479:	f4                   	hlt    
+  40047a:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+0000000000400480 <deregister_tm_clones>:
+deregister_tm_clones():
+  400480:	b8 9f 0b 60 00       	mov    $0x600b9f,%eax
+  400485:	55                   	push   %rbp
+  400486:	48 2d 98 0b 60 00    	sub    $0x600b98,%rax
+  40048c:	48 83 f8 0e          	cmp    $0xe,%rax
+  400490:	48 89 e5             	mov    %rsp,%rbp
+  400493:	76 1b                	jbe    4004b0 <deregister_tm_clones+0x30>
+  400495:	b8 00 00 00 00       	mov    $0x0,%eax
+  40049a:	48 85 c0             	test   %rax,%rax
+  40049d:	74 11                	je     4004b0 <deregister_tm_clones+0x30>
+  40049f:	5d                   	pop    %rbp
+  4004a0:	bf 98 0b 60 00       	mov    $0x600b98,%edi
+  4004a5:	ff e0                	jmpq   *%rax
+  4004a7:	66 0f 1f 84 00 00 00 	nopw   0x0(%rax,%rax,1)
+  4004ae:	00 00 
+  4004b0:	5d                   	pop    %rbp
+  4004b1:	c3                   	retq   
+  4004b2:	66 66 66 66 66 2e 0f 	data16 data16 data16 data16 nopw %cs:0x0(%rax,%rax,1)
+  4004b9:	1f 84 00 00 00 00 00 
+
+00000000004004c0 <register_tm_clones>:
+register_tm_clones():
+  4004c0:	be 98 0b 60 00       	mov    $0x600b98,%esi
+  4004c5:	55                   	push   %rbp
+  4004c6:	48 81 ee 98 0b 60 00 	sub    $0x600b98,%rsi
+  4004cd:	48 c1 fe 03          	sar    $0x3,%rsi
+  4004d1:	48 89 e5             	mov    %rsp,%rbp
+  4004d4:	48 89 f0             	mov    %rsi,%rax
+  4004d7:	48 c1 e8 3f          	shr    $0x3f,%rax
+  4004db:	48 01 c6             	add    %rax,%rsi
+  4004de:	48 d1 fe             	sar    %rsi
+  4004e1:	74 15                	je     4004f8 <register_tm_clones+0x38>
+  4004e3:	b8 00 00 00 00       	mov    $0x0,%eax
+  4004e8:	48 85 c0             	test   %rax,%rax
+  4004eb:	74 0b                	je     4004f8 <register_tm_clones+0x38>
+  4004ed:	5d                   	pop    %rbp
+  4004ee:	bf 98 0b 60 00       	mov    $0x600b98,%edi
+  4004f3:	ff e0                	jmpq   *%rax
+  4004f5:	0f 1f 00             	nopl   (%rax)
+  4004f8:	5d                   	pop    %rbp
+  4004f9:	c3                   	retq   
+  4004fa:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+
+0000000000400500 <__do_global_dtors_aux>:
+__do_global_dtors_aux():
+  400500:	80 3d 91 06 20 00 00 	cmpb   $0x0,0x200691(%rip)        # 600b98 <__TMC_END__>
+  400507:	75 11                	jne    40051a <__do_global_dtors_aux+0x1a>
+  400509:	55                   	push   %rbp
+  40050a:	48 89 e5             	mov    %rsp,%rbp
+  40050d:	e8 6e ff ff ff       	callq  400480 <deregister_tm_clones>
+  400512:	5d                   	pop    %rbp
+  400513:	c6 05 7e 06 20 00 01 	movb   $0x1,0x20067e(%rip)        # 600b98 <__TMC_END__>
+  40051a:	f3 c3                	repz retq 
+  40051c:	0f 1f 40 00          	nopl   0x0(%rax)
+
+0000000000400520 <frame_dummy>:
+frame_dummy():
+  400520:	bf 70 09 60 00       	mov    $0x600970,%edi
+  400525:	48 83 3f 00          	cmpq   $0x0,(%rdi)
+  400529:	75 05                	jne    400530 <frame_dummy+0x10>
+  40052b:	eb 93                	jmp    4004c0 <register_tm_clones>
+  40052d:	0f 1f 00             	nopl   (%rax)
+  400530:	b8 00 00 00 00       	mov    $0x0,%eax
+  400535:	48 85 c0             	test   %rax,%rax
+  400538:	74 f1                	je     40052b <frame_dummy+0xb>
+  40053a:	55                   	push   %rbp
+  40053b:	48 89 e5             	mov    %rsp,%rbp
+  40053e:	ff d0                	callq  *%rax
+  400540:	5d                   	pop    %rbp
+  400541:	e9 7a ff ff ff       	jmpq   4004c0 <register_tm_clones>
+
+0000000000400546 <main>:
+main():
+/home/dhintz1/cs220/labs/lab07/x86Math.c:9
+int add(int x, int y);
+int mult(int x, int y);
+int subtract(int x, int y);
+int divide(int x, int y);
+
+int main(int argc, char **argv) {
+  400546:	55                   	push   %rbp
+  400547:	48 89 e5             	mov    %rsp,%rbp
+  40054a:	48 83 ec 20          	sub    $0x20,%rsp
+  40054e:	89 7d ec             	mov    %edi,-0x14(%rbp)
+  400551:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:10
+	if (argc < 2) {
+  400555:	83 7d ec 01          	cmpl   $0x1,-0x14(%rbp)
+  400559:	7f 23                	jg     40057e <main+0x38>
+/home/dhintz1/cs220/labs/lab07/x86Math.c:11
+		printf("Invoke as %s <number>\n",argv[0]);
+  40055b:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+  40055f:	48 8b 00             	mov    (%rax),%rax
+  400562:	48 89 c6             	mov    %rax,%rsi
+  400565:	bf 48 07 40 00       	mov    $0x400748,%edi
+  40056a:	b8 00 00 00 00       	mov    $0x0,%eax
+  40056f:	e8 9c fe ff ff       	callq  400410 <printf@plt>
+/home/dhintz1/cs220/labs/lab07/x86Math.c:12
+		return 1;
+  400574:	b8 01 00 00 00       	mov    $0x1,%eax
+  400579:	e9 a1 00 00 00       	jmpq   40061f <main+0xd9>
+/home/dhintz1/cs220/labs/lab07/x86Math.c:14
+	}
+	int x=atoi(argv[1]);
+  40057e:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+  400582:	48 83 c0 08          	add    $0x8,%rax
+  400586:	48 8b 00             	mov    (%rax),%rax
+  400589:	48 89 c7             	mov    %rax,%rdi
+  40058c:	e8 af fe ff ff       	callq  400440 <atoi@plt>
+  400591:	89 45 fc             	mov    %eax,-0x4(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:15
+	int ans=mult(x,x);
+  400594:	8b 55 fc             	mov    -0x4(%rbp),%edx
+  400597:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  40059a:	89 d6                	mov    %edx,%esi
+  40059c:	89 c7                	mov    %eax,%edi
+  40059e:	e8 c8 00 00 00       	callq  40066b <mult>
+  4005a3:	89 45 f8             	mov    %eax,-0x8(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:16
+	int term=mult(4,x);
+  4005a6:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  4005a9:	89 c6                	mov    %eax,%esi
+  4005ab:	bf 04 00 00 00       	mov    $0x4,%edi
+  4005b0:	e8 b6 00 00 00       	callq  40066b <mult>
+  4005b5:	89 45 f4             	mov    %eax,-0xc(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:17
+	ans=subtract(ans,term);
+  4005b8:	8b 55 f4             	mov    -0xc(%rbp),%edx
+  4005bb:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  4005be:	89 d6                	mov    %edx,%esi
+  4005c0:	89 c7                	mov    %eax,%edi
+  4005c2:	e8 80 00 00 00       	callq  400647 <subtract>
+  4005c7:	89 45 f8             	mov    %eax,-0x8(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:18
+	ans=add(ans,4);
+  4005ca:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  4005cd:	be 04 00 00 00       	mov    $0x4,%esi
+  4005d2:	89 c7                	mov    %eax,%edi
+  4005d4:	e8 48 00 00 00       	callq  400621 <add>
+  4005d9:	89 45 f8             	mov    %eax,-0x8(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:19
+	term=subtract(x,2);
+  4005dc:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  4005df:	be 02 00 00 00       	mov    $0x2,%esi
+  4005e4:	89 c7                	mov    %eax,%edi
+  4005e6:	e8 5c 00 00 00       	callq  400647 <subtract>
+  4005eb:	89 45 f4             	mov    %eax,-0xc(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:20
+	int check=divide(ans,term);
+  4005ee:	8b 55 f4             	mov    -0xc(%rbp),%edx
+  4005f1:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  4005f4:	89 d6                	mov    %edx,%esi
+  4005f6:	89 c7                	mov    %eax,%edi
+  4005f8:	e8 93 00 00 00       	callq  400690 <divide>
+  4005fd:	89 45 f0             	mov    %eax,-0x10(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:21
+	printf("x=%d, x squared - 4x + 4 =%d divided by x-2=%d\n",x,ans,check);
+  400600:	8b 4d f0             	mov    -0x10(%rbp),%ecx
+  400603:	8b 55 f8             	mov    -0x8(%rbp),%edx
+  400606:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  400609:	89 c6                	mov    %eax,%esi
+  40060b:	bf 60 07 40 00       	mov    $0x400760,%edi
+  400610:	b8 00 00 00 00       	mov    $0x0,%eax
+  400615:	e8 f6 fd ff ff       	callq  400410 <printf@plt>
+/home/dhintz1/cs220/labs/lab07/x86Math.c:22
+	return 0;
+  40061a:	b8 00 00 00 00       	mov    $0x0,%eax
+/home/dhintz1/cs220/labs/lab07/x86Math.c:23
+}
+  40061f:	c9                   	leaveq 
+  400620:	c3                   	retq   
+
+0000000000400621 <add>:
+add():
+/home/dhintz1/cs220/labs/lab07/x86Math.c:32
+	int subtract(int x, int y) { return x-y; }
+	int mult(int x, int y) { return x*y; }
+	int divide(int x, int y) { return x/y; }
+#else
+
+	int add(int x, int y) {
+  400621:	55                   	push   %rbp
+  400622:	48 89 e5             	mov    %rsp,%rbp
+  400625:	89 7d ec             	mov    %edi,-0x14(%rbp)
+  400628:	89 75 e8             	mov    %esi,-0x18(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:33
+		int op1=x;
+  40062b:	8b 45 ec             	mov    -0x14(%rbp),%eax
+  40062e:	89 45 fc             	mov    %eax,-0x4(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:34
+		int op2=y;
+  400631:	8b 45 e8             	mov    -0x18(%rbp),%eax
+  400634:	89 45 f8             	mov    %eax,-0x8(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:35
+		int res=op1+op2;
+  400637:	8b 55 fc             	mov    -0x4(%rbp),%edx
+  40063a:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  40063d:	01 d0                	add    %edx,%eax
+  40063f:	89 45 f4             	mov    %eax,-0xc(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:36
+		return res;
+  400642:	8b 45 f4             	mov    -0xc(%rbp),%eax
+/home/dhintz1/cs220/labs/lab07/x86Math.c:37
+	}
+  400645:	5d                   	pop    %rbp
+  400646:	c3                   	retq   
+
+0000000000400647 <subtract>:
+subtract():
+/home/dhintz1/cs220/labs/lab07/x86Math.c:39
+
+	int subtract(int x, int y) {
+  400647:	55                   	push   %rbp
+  400648:	48 89 e5             	mov    %rsp,%rbp
+  40064b:	89 7d ec             	mov    %edi,-0x14(%rbp)
+  40064e:	89 75 e8             	mov    %esi,-0x18(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:40
+		int op1=x;
+  400651:	8b 45 ec             	mov    -0x14(%rbp),%eax
+  400654:	89 45 fc             	mov    %eax,-0x4(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:41
+		int op2=y;
+  400657:	8b 45 e8             	mov    -0x18(%rbp),%eax
+  40065a:	89 45 f8             	mov    %eax,-0x8(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:42
+		int res=op1-op2;
+  40065d:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  400660:	2b 45 f8             	sub    -0x8(%rbp),%eax
+  400663:	89 45 f4             	mov    %eax,-0xc(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:43
+		return res;
+  400666:	8b 45 f4             	mov    -0xc(%rbp),%eax
+/home/dhintz1/cs220/labs/lab07/x86Math.c:44
+	}
+  400669:	5d                   	pop    %rbp
+  40066a:	c3                   	retq   
+
+000000000040066b <mult>:
+mult():
+/home/dhintz1/cs220/labs/lab07/x86Math.c:46
+
+	int mult(int x, int y) {
+  40066b:	55                   	push   %rbp
+  40066c:	48 89 e5             	mov    %rsp,%rbp
+  40066f:	89 7d ec             	mov    %edi,-0x14(%rbp)
+  400672:	89 75 e8             	mov    %esi,-0x18(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:47
+		int op1=x;
+  400675:	8b 45 ec             	mov    -0x14(%rbp),%eax
+  400678:	89 45 fc             	mov    %eax,-0x4(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:48
+		int op2=y;
+  40067b:	8b 45 e8             	mov    -0x18(%rbp),%eax
+  40067e:	89 45 f8             	mov    %eax,-0x8(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:49
+		int res=op1*op2;
+  400681:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  400684:	0f af 45 f8          	imul   -0x8(%rbp),%eax
+  400688:	89 45 f4             	mov    %eax,-0xc(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:50
+		return res;
+  40068b:	8b 45 f4             	mov    -0xc(%rbp),%eax
+/home/dhintz1/cs220/labs/lab07/x86Math.c:51
+	}
+  40068e:	5d                   	pop    %rbp
+  40068f:	c3                   	retq   
+
+0000000000400690 <divide>:
+divide():
+/home/dhintz1/cs220/labs/lab07/x86Math.c:53
+
+	int divide(int x, int y) {
+  400690:	55                   	push   %rbp
+  400691:	48 89 e5             	mov    %rsp,%rbp
+  400694:	89 7d ec             	mov    %edi,-0x14(%rbp)
+  400697:	89 75 e8             	mov    %esi,-0x18(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:54
+		int op1=x;
+  40069a:	8b 45 ec             	mov    -0x14(%rbp),%eax
+  40069d:	89 45 fc             	mov    %eax,-0x4(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:55
+		int op2=y;
+  4006a0:	8b 45 e8             	mov    -0x18(%rbp),%eax
+  4006a3:	89 45 f8             	mov    %eax,-0x8(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:56
+		int res=op1/op2;
+  4006a6:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  4006a9:	99                   	cltd   
+  4006aa:	f7 7d f8             	idivl  -0x8(%rbp)
+  4006ad:	89 45 f4             	mov    %eax,-0xc(%rbp)
+/home/dhintz1/cs220/labs/lab07/x86Math.c:57
+		return res;
+  4006b0:	8b 45 f4             	mov    -0xc(%rbp),%eax
+/home/dhintz1/cs220/labs/lab07/x86Math.c:58
+	}
+  4006b3:	5d                   	pop    %rbp
+  4006b4:	c3                   	retq   
+  4006b5:	66 2e 0f 1f 84 00 00 	nopw   %cs:0x0(%rax,%rax,1)
+  4006bc:	00 00 00 
+  4006bf:	90                   	nop
+
+00000000004006c0 <__libc_csu_init>:
+__libc_csu_init():
+  4006c0:	41 57                	push   %r15
+  4006c2:	41 89 ff             	mov    %edi,%r15d
+  4006c5:	41 56                	push   %r14
+  4006c7:	49 89 f6             	mov    %rsi,%r14
+  4006ca:	41 55                	push   %r13
+  4006cc:	49 89 d5             	mov    %rdx,%r13
+  4006cf:	41 54                	push   %r12
+  4006d1:	4c 8d 25 88 02 20 00 	lea    0x200288(%rip),%r12        # 600960 <__frame_dummy_init_array_entry>
+  4006d8:	55                   	push   %rbp
+  4006d9:	48 8d 2d 88 02 20 00 	lea    0x200288(%rip),%rbp        # 600968 <__init_array_end>
+  4006e0:	53                   	push   %rbx
+  4006e1:	4c 29 e5             	sub    %r12,%rbp
+  4006e4:	31 db                	xor    %ebx,%ebx
+  4006e6:	48 c1 fd 03          	sar    $0x3,%rbp
+  4006ea:	48 83 ec 08          	sub    $0x8,%rsp
+  4006ee:	e8 ed fc ff ff       	callq  4003e0 <_init>
+  4006f3:	48 85 ed             	test   %rbp,%rbp
+  4006f6:	74 1e                	je     400716 <__libc_csu_init+0x56>
+  4006f8:	0f 1f 84 00 00 00 00 	nopl   0x0(%rax,%rax,1)
+  4006ff:	00 
+  400700:	4c 89 ea             	mov    %r13,%rdx
+  400703:	4c 89 f6             	mov    %r14,%rsi
+  400706:	44 89 ff             	mov    %r15d,%edi
+  400709:	41 ff 14 dc          	callq  *(%r12,%rbx,8)
+  40070d:	48 83 c3 01          	add    $0x1,%rbx
+  400711:	48 39 eb             	cmp    %rbp,%rbx
+  400714:	75 ea                	jne    400700 <__libc_csu_init+0x40>
+  400716:	48 83 c4 08          	add    $0x8,%rsp
+  40071a:	5b                   	pop    %rbx
+  40071b:	5d                   	pop    %rbp
+  40071c:	41 5c                	pop    %r12
+  40071e:	41 5d                	pop    %r13
+  400720:	41 5e                	pop    %r14
+  400722:	41 5f                	pop    %r15
+  400724:	c3                   	retq   
+  400725:	66 66 2e 0f 1f 84 00 	data16 nopw %cs:0x0(%rax,%rax,1)
+  40072c:	00 00 00 00 
+
+0000000000400730 <__libc_csu_fini>:
+__libc_csu_fini():
+  400730:	f3 c3                	repz retq 
+
+Disassembly of section .fini:
+
+0000000000400734 <_fini>:
+_fini():
+  400734:	48 83 ec 08          	sub    $0x8,%rsp
+  400738:	48 83 c4 08          	add    $0x8,%rsp
+  40073c:	c3                   	retq   
