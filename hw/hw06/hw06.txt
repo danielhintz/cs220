@@ -37,7 +37,7 @@ under Content/Homework Submissions/Homework 06 Submission
   	
      a. What do you expect to see printed for most values of argv[1] and argv[2]? Unsigned and signed are the same
      
-     b. Are there any values of argv[1] and argv[2] which will result in "Unsigned and signed are different"? Big numbers, negative numbers
+     b. Are there any values of argv[1] and argv[2] which will result in "Unsigned and signed are different"? I do not think so
      
      c. If you changed the addition to multiplication: "s_sum=x*y;" and "u_sum=v*w;" will you get the same results? Yes
      
@@ -49,7 +49,7 @@ under Content/Homework Submissions/Homework 06 Submission
 	else printf("Special value of x!\n");
 	
    Is there any value of x for which will print "Special value of x!"?
-   If so, what is the value of x? no
+   If so, what is the value of x? No
       
 5. Given the following code:
 
@@ -62,6 +62,6 @@ under Content/Homework Submissions/Homework 06 Submission
 	else printf("This is a counter-example.. the associative property does not hold!\n");
 	
    Which message will get printed?  Counter-example
-   Why?  Floating point arithmetic is stupid and makes my head hurt
+   Why?  Floating point arithmetic rounds (little+pi) and it ends up removing the pi, which is counter-intuitive because addition should be associative but because floating point numbers are stupid it isn't
      
      

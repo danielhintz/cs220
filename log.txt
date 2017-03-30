@@ -1,0 +1,89 @@
+commit 0b8a7341d2aef0150629ecc5d1748bd8e123f9cb
+Author: Daniel Hintz <dhintz1@cs.binghamton.edu>
+Date:   Tue Mar 21 17:07:13 2017 -0400
+
+    whoops
+
+commit ac33257a33da4481b5ea5497f4ce92d6eebebe03
+Author: Daniel Hintz <dhintz1@cs.binghamton.edu>
+Date:   Tue Mar 21 17:06:35 2017 -0400
+
+    finished lab07, made a mistake HA
+
+commit 2687da9fcc163798eb24cef65420ce7b4b1f2673
+Author: Daniel Hintz <dhintz1@cs.binghamton.edu>
+Date:   Mon Mar 20 16:16:35 2017 -0400
+
+    testing 2
+
+commit 85ee81e7dfa0cb6b3626605a4851929da579da7a
+Author: Daniel Hintz <dhintz1@cs.binghamton.edu>
+Date:   Mon Mar 20 16:16:13 2017 -0400
+
+    testing
+
+commit cacdf93aae81e9a6ee500531ba70b7b6260591c1
+Author: Daniel Hintz <dhintz1@cs.binghamton.edu>
+Date:   Mon Mar 20 16:14:21 2017 -0400
+
+    added back in makefiles
+
+commit 15fd2195441617a9d6950b952a248db0c04dcecb
+Author: Daniel Hintz <dhintz1@cs.binghamton.edu>
+Date:   Mon Mar 20 16:12:25 2017 -0400
+
+    gitignore now working
+
+commit faa4cb44a8adad00fb0bbb7fffad06126e0312a1
+Author: Daniel Hintz <dhintz1@cs.binghamton.edu>
+Date:   Mon Mar 20 16:11:15 2017 -0400
+
+    removed exec
+
+commit aae2148296d56ab41f4611e4bb951afdaefa29c4
+Author: Daniel Hintz <dhintz1@cs.binghamton.edu>
+Date:   Mon Mar 20 15:34:03 2017 -0400
+
+    done i believe
+
+commit 87a7e632ee5e7cd22afb449abb923ae28731fae2
+Author: Daniel Hintz <dhintz1@cs.binghamton.edu>
+Date:   Fri Mar 17 18:23:08 2017 -0400
+
+    All done!
+
+commit 748114b38a24f4dcc5798121d8603ef9a898e5b9
+Author: Daniel Hintz <dhintz1@cs.binghamton.edu>
+Date:   Wed Mar 15 20:29:19 2017 -0400
+
+    Finished project
+
+commit a34cbfcfd2a680cc2baed55172e8727e99d0d2a0
+Author: Daniel Hintz <dhintz1@cs.binghamton.edu>
+Date:   Mon Mar 13 18:54:42 2017 -0400
+
+    stuffs
+
+commit 31df357c204d2dd92b7e238d4c56ff5edfa77280
+Author: Daniel Hintz <dhintz1@cs.binghamton.edu>
+Date:   Wed Mar 8 20:32:16 2017 -0500
+
+    stuff
+
+commit dacca8f79f30edba28d8c112f43ae19a49401d03
+Author: Daniel Hintz <dhintz1@cs.binghamton.edu>
+Date:   Wed Mar 8 19:51:42 2017 -0500
+
+    stuff
+
+commit 714155f8552a02e22ddb52f607a8e80da00bc93e
+Author: Daniel Hintz <DanielCHintz@gmail.com>
+Date:   Wed Mar 8 20:44:58 2017 +0000
+
+    README.md edited online with Bitbucket
+
+commit 894082ecca61f19225b44fde6c78ad6bd8d81b99
+Author: Daniel Hintz <dhintz1@cs.binghamton.edu>
+Date:   Wed Mar 8 15:42:56 2017 -0500
+
+    Initial commit

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
+int main(int argc, char** argv)
 {
   /*int x = -2147483646;
   do {
@@ -14,15 +14,15 @@ int main()
     x++;
     } while(x+1>x);*/
 
-  const float big=1e20;
-  const float little=-1e20;
-  const float pi=3.14;
-  float y = (big + little)+pi;
-  float z = big + (little + pi);
-  if (y==z) printf("This is an example of the associative property.\n");
-  else printf("This is a counter-example.. the associative property does not hold!\n");
+  int x = atoi(argv[1]);
+  int y = atoi(argv[2]);
+  unsigned int v = x;
+  unsigned int w = y;
+  int ss=x*y;
+  int yy=v*w;
 
-  printf("%f, %f\n", y,z);
+  if(ss==yy)printf("U and S are the same\n");
+  else printf("U and S are different\n");
   
   return 0;
 }
