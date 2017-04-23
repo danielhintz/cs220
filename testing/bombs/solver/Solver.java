@@ -10,6 +10,8 @@ public class Solver {
 	phases[6] = "";
     }
     private static String phase3Format = null;
+    private static String phase5Phrase = null;
+    private static String phase5Key = "maduiersnfotvbyl";
     
     private static void phase_1() throws Exception {
 	String lookFor = "Good work!  On to the next...";
@@ -18,11 +20,24 @@ public class Solver {
 	BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
 	String line;
 	boolean found = false;
+	boolean nextP5 = false;
+	boolean nextKey = false;
+	
 	while((line = br.readLine())!=null) {
+	    if(line.length() == 6 && nextP5){
+		phase5Phrase = line;
+		nextP5 = false;
+	    }
+	    if(nextKey) {
+		phase5Key = line;
+		nextKey = false;
+	    }
+	    if(line.equals("fffff."))nextP5 = true;
+	    if(line.equals(";*3$"))nextKey = true;
 	    if(found) {
 		phases[0] = line;
 		phase3Format = br.readLine();
-		break;
+		found = false;
 	    }
 	    if(line.equals(lookFor))found = true;
 	}
@@ -117,25 +132,17 @@ public class Solver {
 	    //6 letter word
 	    //TODO: dictionary attack doesnt seem to work
 	case 1:
-	    char[] word = new char[6];
-	    for(int i =0;i<word.length;i++)word[i] = 'a';
+	    String key = phase5Key;
+	    String desired = phase5Phrase;
+	    String xD = "";
+	    for(int i =0;i<desired.length();i++) {
+		int index = key.indexOf(desired.charAt(i));
+		char c = (char)(0x70+index);
+	        xD+=c;
+	    }
 
-	    do {
-		phases[4] = new String(word);
-		word[word.length-1]++;
-		if(word[word.length-1] > 'z') {
-		    word[word.length-1] = 'a';
-		    word[word.length-2]++;
-		    for(int i = word.length-2;i>=0;i--) {
-			if(word[i] > 'z') {
-			    word[i] = 'a';
-			    word[i-1]++;
-			}
-		    }
-		}
-		System.out.println(word);
-	    } while(test_phases(phases) < 5);
-
+	    phases[4] = xD;
+	    
 	    /*
 	      List<String> words = getWords(6);
 	      for(int i =0;i<words.size();i++) {
