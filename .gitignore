@@ -4,6 +4,11 @@
 # Unignore all with extensions
 !*.*
 
+!keybomb*
+
+#ignore compiled java classes
+*.class
+
 # Unignore all dirs
 !*/
 

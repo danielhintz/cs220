@@ -52,7 +52,7 @@ public class Solver {
 		doubling = true;
 		break;
 	    }
-	    if(s.contains("add    %ecx,%eax")) {
+	    if(s.contains("sub    $0x2,%eax")) {
 		fib = true;
 		break;
 	    }
