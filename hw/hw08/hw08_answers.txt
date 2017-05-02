@@ -1,0 +1,26 @@
+CS-220, Spring 2017 Homework 08, Due April 30, 2017
+
+Build and run the code in fact.c (a Makefile is provided).
+ 
+Run fact.c under gdb, and set a breakpoint in the factorial function in the "then" block of "if (n<2)". 
+(It's easiest to set a breakpoint at one of the x86 instructions generated from "answer=n".) 
+
+When you reach the breakpoint, fill in the following table with information gathered from gdb (using 
+instructions like "print $rbp" and "x /20xg %rsp", but remember the "x" command in gdb lists memory data 
+from low address to high address, we are used to showing memory from high address to low address.) 
+
+Enter 1 row for each stack frame on the stack up to and including the frame where caller's %ebp
+is zero (which indicates that the caller is the operating system.) Put an "n/a" in the table for 
+entries which are not relevant.
+
+Then submit the edited version of this file in myCourses under hw08.
+
+Frame High @   | Frame Low @    | Function	| Value of "n"	 	| Return Address     |
+---------------+----------------+---------------|-----------------------|--------------------|
+0x7fffffffe960 | 0x7fffffffe940 | factorial	| 1			| 0x00000000004005a5 |
+0x7fffffffe990 | 0x7fffffffe970 | factorial     | 2                     | 0x00000000004005a5 |
+0x7fffffffe9c0 | 0x7fffffffe9a0 | factorial     | 3                     | 0x00000000004005a5 |
+0x7fffffffe9e0 | 0x7fffffffe9d0 | factorial     | 4                     | 0x0000000000400564 |
+0x7fffffffea00 | 0x7fffffffe9f0 | main          | n/a                   | 0x00007ffff7a52b45 |               
+               |                |               |                       |                    |
+               |                |               |                       |                    | 

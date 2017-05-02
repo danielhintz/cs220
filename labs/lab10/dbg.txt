@@ -1,0 +1,2 @@
+b getString
+r <testhex.txt

@@ -1,0 +1,7 @@
+# Put input for makeHex in this file.
+# Lines that start with "#" are comments and are ignored by makeHex
+# Lines that start with "C " are character strings, the data is copied to the output (testHex.txt)
+# Lines that start with "X " are hexadecimal strings, the data is converted from hex to ASCII and copied
+#    to the output (testHex.txt)
+C danielhintzaaadanielhintzadanielhintzdanielhintzadanielhintzdanielhintzadanielhintzdanielhintzanielhintz
+X 500640

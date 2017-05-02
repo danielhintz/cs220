@@ -1,0 +1,30 @@
+CS-220 Spring 2017 Lab 10 answers		Due: April 25, 2017
+
+1. Cut and paste a copy of your successful test.txt file that creates a texthex.txt 
+   file that invokes the target function:
+   C danielhintzaaadanielhintzadanielhintzdanielhintzadanielhintzdanielhintzadanielhintzdanielhintzanielhintz
+   X 500640
+
+2. Notice that the target function in target.c ends with an "exit(0)" invocation.  The
+   "exit(0)" causes the target function to return directly to the operating system cleanup
+   routine instead of to the function that called "target".  If the target function had 
+   ended with "return false" instead of "exit(0)", would target still run sucessfully?
+   If not, what might happen and why?
+
+   Possible segmentation fault, the return address could be broken
+
+3. If target.c had used fgets instead of gets, would your buffer overflow attack have been succesful?
+   Why or why not?
+
+   No because it would've stopped reading the input after the max length
+   
+4. Did the Makefile make this lab easier or harder to run?  Is it worth the time to build a correct
+   Makefile so that dependencies are automatically taken care of?
+
+   Much easier, definitely worth the time to make a good Makefile
+   
+5. Now that you know how to do a buffer overflow attack, could you do a buffer overflow
+   attack on target WITHOUT looking at target.c?  If not, why not?  If so, what tools
+   would you use to figure out what is in the "target" executable file?
+
+   It would be much harder not being able to look at the source code, BUT you could dump the assembly and potentially still do it

