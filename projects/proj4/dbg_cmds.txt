@@ -1,3 +1,4 @@
 set disassemble-next-line on
-b *getUserLine+31
+b *0x400f02
 run <testhex.txt
+info frame
