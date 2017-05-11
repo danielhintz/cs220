@@ -56,7 +56,6 @@ public class Solver {
 	BufferedWriter bw = new BufferedWriter(new FileWriter(new File("hack.s")));
 	for(String line : PRG) {
 	    String t = line.replaceAll("%SECTION", section).replaceAll("%OFFSET", ""+ID*4);
-	    System.out.println(t);
 	    bw.write(t);
 	    bw.write("\n");
 	}
@@ -82,7 +81,6 @@ public class Solver {
 		curByte++;
 	    }
 	} catch(Exception e){}
-	System.out.println(bytes);
 	bw = new BufferedWriter(new FileWriter(new File("test.txt")));
 	if(section == secA) bw.write("C A\n");
 	else bw.write("C B\n");
@@ -92,5 +90,11 @@ public class Solver {
 	}
 	bw.write("\nX 0120600\n");
 	bw.close();
+
+	p = Runtime.getRuntime().exec("make test");
+	BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+	String line;
+	while((line = br.readLine()) != null) System.out.println(line);
+	br.close();
     }
 }
