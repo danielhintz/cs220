@@ -1,7 +1,0 @@
-There are rumors on the internets.
-1 2 4 8 16 32
-4 0
-14 7 BearCat
-E1F837
-1 2 4 6 5 3
-22
