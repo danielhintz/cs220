@@ -143,7 +143,7 @@ public class Solver {
 	    String xD = "";
 	    for(int i =0;i<desired.length();i++) {
 		int index = key.indexOf(desired.charAt(i));
-		char c = (char)(0x70+index);
+		char c = (char)(0x60+index);
 	        xD+=c;
 	    }
 
