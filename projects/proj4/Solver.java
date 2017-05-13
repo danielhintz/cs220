@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.*;
 
 public class Solver {
 
@@ -85,8 +86,10 @@ public class Solver {
 	if(section == secA) bw.write("C A\n");
 	else bw.write("C B\n");
 	bw.write("X " + bytes + "\nX ");
+	Random r = new Random();
 	for(int i = 0; i < NEEDED_LENGTH-bytes.length(); i++) {
-	    bw.write(i%2==0 ? "6" : "9");
+	    //bw.write(i%2==0 ? "6" : "9");
+	    bw.write("" + r.nextInt(10));
 	}
 	bw.write("\nX 0120600\n");
 	bw.close();
