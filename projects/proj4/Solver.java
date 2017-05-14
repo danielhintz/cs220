@@ -4,7 +4,7 @@ import java.util.*;
 public class Solver {
 
     private static final int NEEDED_LENGTH = 525;
-    //OFFSET = 4 * ID
+
     private static final String secA = "0x603cc0";
     private static final String secB = "0x602b80";
     private static String[] PRG = {".globl main",
@@ -61,43 +61,42 @@ public class Solver {
 	    bw.write("\n");
 	}
 	bw.close();
-	Process p = Runtime.getRuntime().exec("make hack");
+	Process p = Runtime.getRuntime().exec("gcc -c -o hack.o hack.s");
 	p.waitFor();
+
 	DataInputStream dis = new DataInputStream(new FileInputStream(new File("hack.o")));
 
+	DataOutputStream dos = new DataOutputStream(new FileOutputStream(new File("testhex.txt")));
+
+	if(section == secA) dos.writeByte((byte)'A');
+	else dos.writeByte((byte)'B');
+	
 	int start = 0x40;
 	int len = 220;
 	int curByte = 0;
 	int readByte = 0;
-	String bytes = "";
+	int bytes = 0;
 	try {
 	    while (true) {
 		readByte = dis.readByte();
 		if(curByte >= start && curByte <= start+len) {
 		    if(readByte == 0x2e) break;
-		    String s = String.format("%02x", readByte&0xff);
-		    bytes+=s;
-		    //System.out.printf("%02x", (readByte&0xff));
+		    dos.writeByte((byte)(readByte&0xff));
+		    bytes+=2;
 		}
 		curByte++;
 	    }
 	} catch(Exception e){}
-	bw = new BufferedWriter(new FileWriter(new File("test.txt")));
-	if(section == secA) bw.write("C A\n");
-	else bw.write("C B\n");
-	bw.write("X " + bytes + "\nX ");
 	Random r = new Random();
-	for(int i = 0; i < NEEDED_LENGTH-bytes.length(); i++) {
-	    //bw.write(i%2==0 ? "6" : "9");
-	    bw.write("" + r.nextInt(10));
+	for(int i = 0; i <= (NEEDED_LENGTH-bytes)/2; i++) {
+	    dos.writeByte((r.nextInt(10) *16) + r.nextInt(10));
 	}
-	bw.write("\nX 0120600\n");
-	bw.close();
+	dos.writeByte(0x01);
+	dos.writeByte(0x20);
+	dos.writeByte(0x60);
+	dos.writeByte(0x0);
+	dos.writeByte(0x0a);
 
-	p = Runtime.getRuntime().exec("make test");
-	BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
-	String line;
-	while((line = br.readLine()) != null) System.out.println(line);
-	br.close();
+	dos.close();
     }
 }
